@@ -1,0 +1,47 @@
+{{ define "prijava"}}
+<!DOCTYPE html>
+<html>
+{{ template "header"}}
+
+<body>
+    <ul class="nav nav-pills nav-justified">
+        {{ range .Sports}}
+        <li class="nav-item bg-light">
+            <a class="nav-link" href="/{{.}}">{{.}}</a>
+        </li>
+        {{end}}
+        <!-- <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+        </li>
+         -->
+    </ul>
+    <div class="container">
+        <div class="row">
+            <form action="/prijava" method="POST" class="col">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="Username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Prijava</button>
+                <a href="/registracija" class="btn btn-secondary" role="button">Registracija</a>
+            </form>
+        </div>
+        {{ if .Error}}
+        <div class="row">
+            <div class="alert alert-danger" role="alert">
+                {{.Error}}
+            </div>
+        </div>
+        {{end}}
+
+    </div>
+    {{template "footer"}}
+</body>
+
+</html>
+{{end}}

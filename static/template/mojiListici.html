@@ -1,0 +1,48 @@
+{{define "mojiListici"}}
+
+<!DOCTYPE html>
+<html>
+{{ template "header" }}
+
+<body>
+    {{ template "navbar"}}
+
+    <ul class="nav nav-pills nav-justified">
+        {{ range .Sports}}
+        <li class="nav-item bg-light">
+            <a class="nav-link" href="/{{.}}">{{.}}</a>
+        </li>
+        {{end}}
+        <!-- <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+        </li>
+         -->
+    </ul>
+
+    <div class="container">
+        <div class="row">
+            {{range .Listici}}
+            <div class="col-4">
+                <div class="card" style="width: 26rem;">
+                    <img src="https://www.jouis.co.uk/wp-content/uploads/sites/317/2020/02/betting-offers.png" class="card-img-top" alt="listicSlika">
+                    <div class="card-body">
+                        <p class="card-text">{{range .Parovi}}
+                            <div>
+                                {{.}}
+                            </div>
+                            {{end}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+
+    </div>
+
+
+    
+</body>
+
+</html>
+{{end}}

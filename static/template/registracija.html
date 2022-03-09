@@ -1,0 +1,57 @@
+{{ define "registracija"}}
+<!DOCTYPE html>
+<html>
+{{ template "header"}}
+
+<body>
+    <ul class="nav nav-pills nav-justified">
+        {{ range .Sports}}
+        <li class="nav-item bg-light">
+            <a class="nav-link" href="/{{.}}">{{.}}</a>
+        </li>
+        {{end}}
+        <!-- <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+        </li>
+         -->
+    </ul>
+    <div class="container">
+        <div class="row">
+            <form action="/registracija" method="POST" class="col">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="Username" name="username" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">You'll use this to login</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+        {{ if .Error}}
+        <div class="row">
+            <div class="alert alert-danger" role="alert">
+                Username already exists!
+            </div>
+        </div>
+        {{end}}
+    </div>
+    {{ template "footer"}}
+</body>
+
+</html>
+{{ end }}

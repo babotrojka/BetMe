@@ -1,0 +1,70 @@
+{{define "home"}}
+
+<!DOCTYPE html>
+<html>
+{{ template "header" }}
+
+<body
+    style="background-image: url(https://images.all-free-download.com/images/graphiclarge/cool_basketball_and_background_elements_vector_163421.jpg);">
+    {{ template "navbar"}}
+
+    <ul class="nav nav-pills nav-justified">
+        {{ range .Sports}}
+        <li class="nav-item bg-light">
+            <a class="nav-link" href="/{{.}}">{{.}}</a>
+        </li>
+        {{end}}
+        <!-- <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+        </li>
+         -->
+    </ul>
+
+
+    <div class="container">
+        <div class="row justify-content-end">
+            {{if .Check}}
+            <div class="col alert alert-primary" role="alert">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            Dobrodošao {{ .User}}!
+                            <a class="btn btn-warning" href="/mojiListici" role="button" style="font-size: 0.85rem; margin-left: 2vw;">
+                                Moji listići
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            {{.Msg}}
+                        </div>
+                        <div class="col-2">
+                            <a href="/logout" class="btn btn-secondary" role="button">Logout</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ else }}
+            <div class="col-10"></div>
+            <div class="col-1">
+                <a class="btn btn-secondary" href="/registracija" role="button">Registracija</a>
+            </div>
+            <div class="col-1">
+                <a class="btn btn-secondary" href="/prijava" role="button" style="margin-left: 1vw;">Prijava</a>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    <div class="card middleWelcome text-center bg-light">
+        <div class="card-body" style="margin-top: 8vh;">
+            <h1 class="card-title" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                Welcome to BetMe</h1>
+            <p class="card-text">Place where dreams come true.</p>
+            <a class="btn btn-primary" href="/Basketball" role="button">Lets start</a>
+        </div>
+    </div>
+
+    {{template "footer"}}
+</body>
+
+</html>
+{{end}}
